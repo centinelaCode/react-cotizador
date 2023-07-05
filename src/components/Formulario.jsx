@@ -6,7 +6,7 @@ import Error from './Error'
 
 const Formulario = () => {
 
-   const { data, handleChangeData, error, setError, cotizarSeguro } = useCotizador();
+   const { data, handleChangeData, error, setError, cotizarSeguro, resultado } = useCotizador();
 
    const handleSubmit = e => {
       e.preventDefault();
@@ -100,6 +100,8 @@ const Formulario = () => {
                value="Quote" 
             />
          </form>
+
+         
       </>      
 )
 }
