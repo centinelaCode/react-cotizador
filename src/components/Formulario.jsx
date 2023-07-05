@@ -1,15 +1,36 @@
 import { Fragment } from 'react'
 import { MARCAS, YEARS, PLANES } from '../constants'
 import useCotizador from '../hooks/useCotizador'
+import Error from './Error'
 
 
 const Formulario = () => {
 
-   const { data, handleChangeData } = useCotizador();
+   const { data, handleChangeData, error, setError } = useCotizador();
+
+   const handleSubmit = e => {
+      e.preventDefault();
+      console.log(data)
+
+      // valida si hay campos vacios
+      if(Object.values(data).includes('')){
+         setError('Todos los campos son obligatorios')
+         return 
+      }
+
+      // como pasa la validación se sete el erro
+      setError('');
+
+      // TODO: Calculos de la cotizacion
+   }
 
    return (
-      <>        
-         <form>
+      <> 
+         {error && <Error />}
+
+         <form
+            onSubmit={handleSubmit}
+         >
             {/* Marca */}
             <div className="my-5">
                <label className="block mb-3 fornt-bold text-gray-500 uppercase">Select Brand</label>
