@@ -16,7 +16,9 @@ const CotizadorProvider = ({ children }) => {
    })
    const [error, setError] = useState('')
    const [resultado, setResultado] = useState(0)
+   const [cargando, setCargando] = useState(false)
 
+   // funciones
    const handleChangeData = e => {
       setData({
          ...data,
@@ -49,7 +51,12 @@ const CotizadorProvider = ({ children }) => {
       resultado = formatearDinero(resultado);
       //console.log(resultado)
 
-      setResultado(resultado)
+      setCargando(true)
+
+      setTimeout(() => {
+         setResultado(resultado)         
+         setCargando(false)
+      }, 3000);
    }
 
    
@@ -62,6 +69,7 @@ const CotizadorProvider = ({ children }) => {
             setError,
             cotizarSeguro,
             resultado,
+            cargando,
          }}
       >
          { children }
