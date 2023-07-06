@@ -10,7 +10,7 @@ const Formulario = () => {
 
    const handleSubmit = e => {
       e.preventDefault();
-      console.log(data)
+      // console.log(data)
 
       // valida si hay campos vacios
       if(Object.values(data).includes('')){
